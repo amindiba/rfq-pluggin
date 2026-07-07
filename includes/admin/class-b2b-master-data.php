@@ -36,7 +36,7 @@ class B2B_Procurement_Master_Data {
             <div class="b2b-card-body">
                 <div class="b2b-flex b2b-gap-4">
                     <a href="<?php echo admin_url('admin.php?page=b2b-measurement-units'); ?>" class="b2b-btn b2b-btn-primary">واحدهای اندازه‌گیری</a>
-                    <a href="<?php echo admin_url('admin.php?page=b2b-geography'); ?>" class="b2b-btn b2b-btn-secondary">جغرافیای ایران</a>
+                    <a href="<?php echo admin_url('admin.php?page=wc-settings&tab=general&section=general'); ?>" class="b2b-btn b2b-btn-secondary">تنظیمات WooCommerce</a>
                 </div>
             </div>
         </div>

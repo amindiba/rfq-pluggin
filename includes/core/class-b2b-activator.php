@@ -113,8 +113,6 @@ class B2B_Procurement_Activator {
     private static function create_database_tables() {
         B2B_Procurement_Master_Data_DB::create_tables();
         B2B_Procurement_Master_Data_DB::seed_defaults();
-        B2B_Procurement_Geography_DB::create_tables();
-        B2B_Procurement_Geography_DB::seed_iran_data();
         B2B_Procurement_Product_DB::create_tables();
         B2B_Supplier_DB::create_tables();
         B2B_Rfq_DB::create_tables();
