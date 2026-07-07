@@ -114,11 +114,19 @@ class B2B_Contract_Admin {
                     <div class="b2b-form-row">
                         <div class="b2b-form-field">
                             <label class="b2b-form-label">تاریخ شروع <span class="b2b-required">*</span></label>
-                            <input type="date" name="start_date" class="b2b-input" required value="<?php echo $contract ? esc_attr($contract->start_date) : ''; ?>" <?php echo !$can_edit ? 'disabled' : ''; ?> />
+                            <?php B2B_PC_Persian_Datepicker::render('start_date', $contract ? esc_attr($contract->start_date) : '', array(
+                                'required' => !$can_edit,
+                                'disabled' => !$can_edit,
+                                'placeholder' => 'تاریخ شروع قرارداد',
+                            )); ?>
                         </div>
                         <div class="b2b-form-field">
                             <label class="b2b-form-label">تاریخ پایان <span class="b2b-required">*</span></label>
-                            <input type="date" name="end_date" class="b2b-input" required value="<?php echo $contract ? esc_attr($contract->end_date) : ''; ?>" <?php echo !$can_edit ? 'disabled' : ''; ?> />
+                            <?php B2B_PC_Persian_Datepicker::render('end_date', $contract ? esc_attr($contract->end_date) : '', array(
+                                'required' => !$can_edit,
+                                'disabled' => !$can_edit,
+                                'placeholder' => 'تاریخ پایان قرارداد',
+                            )); ?>
                         </div>
                     </div>
                     <div class="b2b-form-field">
@@ -189,8 +197,8 @@ class B2B_Contract_Admin {
                     <div><strong>تامین‌کننده:</strong> <?php echo esc_html($contract->supplier_name); ?></div>
                     <div><strong>شماره سفارش:</strong> <?php echo esc_html($contract->po_number); ?></div>
                     <div><strong>شماره درخواست:</strong> <?php echo esc_html($contract->rfq_reference); ?></div>
-                    <div><strong>تاریخ شروع:</strong> <?php echo esc_html($contract->start_date); ?></div>
-                    <div><strong>تاریخ پایان:</strong> <?php echo esc_html($contract->end_date); ?></div>
+                    <div><strong>تاریخ شروع:</strong> <?php echo esc_html($contract->start_date ? B2B_PC_Formatter::format_gregorian($contract->start_date, 'long') : '-'); ?></div>
+                    <div><strong>تاریخ پایان:</strong> <?php echo esc_html($contract->end_date ? B2B_PC_Formatter::format_gregorian($contract->end_date, 'long') : '-'); ?></div>
                     <div><strong>ارزش قرارداد:</strong> <?php echo number_format($contract->contract_value); ?> تومان</div>
                 </div>
                 <?php if (!empty($contract->notes)) : ?>

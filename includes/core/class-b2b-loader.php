@@ -16,19 +16,7 @@ defined('ABSPATH') || exit;
  */
 class B2B_Procurement_Loader {
 
-    /**
-     * Registered actions.
-     *
-     * @var array
-     */
-    private $actions = array();
-
-    /**
-     * Registered filters.
-     *
-     * @var array
-     */
-    private $filters = array();
+    private $hooks = array('actions' => array(), 'filters' => array());
 
     /**
      * Register an action hook.

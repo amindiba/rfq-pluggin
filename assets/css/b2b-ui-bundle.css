@@ -3937,5 +3937,63 @@ body.b2b-modal-open { overflow: hidden; }
 @media (max-width: 900px) { .b2b-product-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .b2b-product-grid { grid-template-columns: 1fr; } }
 
+/* ===== DRAG & DROP ===== */
+.b2b-media-upload {
+    border: 2px dashed var(--b2b-border, #ECE6F8);
+    border-radius: 10px;
+    padding: 16px;
+    transition: all 0.2s;
+    position: relative;
+}
+.b2b-media-upload.b2b-drag-over {
+    border-color: var(--b2b-primary, #7B2CBF);
+    background: var(--b2b-primary-50, #FAF7FF);
+    box-shadow: 0 0 0 4px rgba(123,44,191,0.1);
+}
+.b2b-media-upload .b2b-media-preview {
+    margin-bottom: 10px;
+    min-height: 20px;
+}
+
+/* Gallery thumbnails */
+.b2b-gallery-thumb {
+    position: relative;
+    display: inline-block;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.b2b-gallery-thumb img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid var(--b2b-border, #ECE6F8);
+    transition: border-color 0.2s;
+}
+.b2b-gallery-thumb:hover img {
+    border-color: var(--b2b-primary, #7B2CBF);
+}
+.b2b-gallery-remove {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--b2b-danger, #EF4444);
+    color: #fff;
+    border: none;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.b2b-gallery-thumb:hover .b2b-gallery-remove {
+    opacity: 1;
+}
+
 
 

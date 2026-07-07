@@ -301,21 +301,162 @@
 
         // ==================== MEDIA ====================
         initMediaUploader: function () {
+            var self = this;
+
+            // Open media library on button click
             $(document).on('click', '.b2b-media-upload-btn', function (e) {
                 e.preventDefault();
-                var $w = $(this).closest('.b2b-media-wrap');
-                var $i = $w.find('input[type="hidden"]');
-                var $p = $w.find('.b2b-media-preview');
+                var $btn = $(this);
+                var isMultiple = $btn.data('multiple') === true || $btn.data('multiple') === 'true';
+                var targetId = $btn.data('target');
+                var previewId = $btn.data('preview');
+                var $wrap = $btn.closest('.b2b-media-upload, .b2b-media-wrap');
+                var $input = targetId ? $('#' + targetId) : $wrap.find('input[type="hidden"]');
+                var $preview = previewId ? $('#' + previewId) : $wrap.find('.b2b-media-preview');
+
                 if (typeof wp === 'undefined' || typeof wp.media === 'undefined') { alert('کتابخانه رسانه بارگذاری نشده.'); return; }
-                var frame = wp.media({ title: 'انتخاب تصویر', button: { text: 'انتخاب' }, multiple: false });
-                frame.on('select', function () { var a = frame.state().get('selection').first().toJSON(); $i.val(a.url); $p.html('<img src="' + a.url + '" />'); });
+
+                var frame = wp.media({
+                    title: isMultiple ? 'انتخاب تصاویر' : 'انتخاب تصویر',
+                    button: { text: 'انتخاب' },
+                    multiple: isMultiple,
+                    library: { type: 'image' }
+                });
+
+                frame.on('select', function () {
+                    if (isMultiple) {
+                        // Append new images to existing
+                        var selection = frame.state().get('selection');
+                        var existingIds = $input.val() ? $input.val().split(',').filter(Boolean) : [];
+                        selection.each(function (att) {
+                            var a = att.toJSON();
+                            if (existingIds.indexOf(String(a.id)) === -1) {
+                                existingIds.push(String(a.id));
+                            }
+                        });
+                        $input.val(existingIds.join(','));
+                        self.refreshGalleryPreview($input, $preview);
+                    } else {
+                        var a = frame.state().get('selection').first().toJSON();
+                        $input.val(a.id);
+                        var thumb = (a.sizes && a.sizes.thumbnail) ? a.sizes.thumbnail.url : a.url;
+                        $preview.html('<img src="' + thumb + '" style="max-width:200px;border-radius:8px;" />');
+                    }
+                });
                 frame.open();
             });
+
+            // Remove single image
             $(document).on('click', '.b2b-media-remove-btn', function (e) {
                 e.preventDefault();
-                var $w = $(this).closest('.b2b-media-wrap');
-                $w.find('.b2b-media-preview').html('');
-                $w.find('input[type="hidden"]').val('');
+                var $wrap = $(this).closest('.b2b-media-upload, .b2b-media-wrap');
+                $wrap.find('.b2b-media-preview').html('');
+                $wrap.find('input[type="hidden"]').val('');
+            });
+
+            // Remove single gallery image
+            $(document).on('click', '.b2b-gallery-remove', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var $img = $(this).closest('.b2b-gallery-thumb');
+                var imgId = $img.data('id');
+                var $input = $('#gallery_ids');
+                var ids = $input.val() ? $input.val().split(',').filter(Boolean) : [];
+                ids = ids.filter(function (id) { return String(id) !== String(imgId); });
+                $input.val(ids.join(','));
+                $img.fadeOut(200, function () { $(this).remove(); });
+            });
+
+            // Drag & Drop on media upload areas
+            self.initDragDrop();
+
+            // Load existing gallery previews from server
+            if ($('#gallery_ids').length) {
+                var galleryVal = $('#gallery_ids').val();
+                if (galleryVal && galleryVal.trim()) {
+                    self.refreshGalleryPreview($('#gallery_ids'), $('#gallery-preview'));
+                }
+            }
+        },
+
+        refreshGalleryPreview: function ($input, $preview) {
+            var ids = $input.val() ? $input.val().split(',').filter(Boolean) : [];
+            if (!ids.length) { $preview.html(''); return; }
+
+            var html = '';
+            for (var i = 0; i < ids.length; i++) {
+                html += '<div class="b2b-gallery-thumb" data-id="' + ids[i] + '" style="position:relative;display:inline-block;">' +
+                    '<img src="' + '/wp-admin/admin-ajax.php?action=b2b_get_thumb&id=' + ids[i] + '" style="width:80px;height:80px;object-fit:cover;border-radius:6px;border:2px solid #ECE6F8;" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22><rect fill=%22%23f3f4f6%22 width=%2280%22 height=%2280%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%239ca3af%22 font-size=%2214%22>&#128247;</text></svg>\'" />' +
+                    '<button type="button" class="b2b-gallery-remove" style="position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#EF4444;color:#fff;border:none;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;" title="حذف">&#10005;</button>' +
+                    '</div>';
+            }
+            $preview.html(html);
+        },
+
+        initDragDrop: function () {
+            var self = this;
+
+            // Make media upload zones drag-drop targets
+            $(document).find('.b2b-media-upload').each(function () {
+                var $zone = $(this);
+                if ($zone.data('dragdrop-init')) return;
+                $zone.data('dragdrop-init', true);
+
+                // Prevent default drag behaviors
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(function (eventName) {
+                    $zone[0].addEventListener(eventName, function (e) { e.preventDefault(); e.stopPropagation(); }, false);
+                });
+
+                // Highlight on drag over
+                ['dragenter', 'dragover'].forEach(function (eventName) {
+                    $zone[0].addEventListener(eventName, function () { $zone.addClass('b2b-drag-over'); }, false);
+                });
+
+                // Remove highlight on drag leave / drop
+                ['dragleave', 'drop'].forEach(function (eventName) {
+                    $zone[0].addEventListener(eventName, function () { $zone.removeClass('b2b-drag-over'); }, false);
+                });
+
+                // Handle drop
+                $zone[0].addEventListener('drop', function (e) {
+                    var files = e.dataTransfer.files;
+                    if (!files || !files.length) return;
+
+                    var isMultiple = $zone.find('.b2b-media-upload-btn').data('multiple') === true || $zone.find('.b2b-media-upload-btn').data('multiple') === 'true';
+                    var $input = $zone.find('input[type="hidden"]');
+                    var $preview = $zone.find('.b2b-media-preview');
+
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+                        if (!file.type.startsWith('image/')) continue;
+
+                        var formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('action', 'b2b_pr_upload');
+                        formData.append('nonce', typeof b2bPR !== 'undefined' ? b2bPR.nonce : (typeof b2bProcurement !== 'undefined' ? b2bProcurement.nonce : ''));
+
+                        $.ajax({
+                            url: (typeof b2bProcurement !== 'undefined') ? b2bProcurement.ajaxUrl : '/wp-admin/admin-ajax.php',
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (r) {
+                                if (r && r.success) {
+                                    if (isMultiple) {
+                                        var ids = $input.val() ? $input.val().split(',').filter(Boolean) : [];
+                                        ids.push(String(r.data.id));
+                                        $input.val(ids.join(','));
+                                        self.refreshGalleryPreview($input, $preview);
+                                    } else {
+                                        $input.val(r.data.id);
+                                        $preview.html('<img src="' + r.data.url + '" style="max-width:200px;border-radius:8px;" />');
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }, false);
             });
         },
 

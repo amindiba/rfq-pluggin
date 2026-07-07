@@ -103,12 +103,24 @@ final class B2B_Procurement_Bootstrap {
                 require_once $path;
             }
         }
+        // Persian Calendar Engine
+        $pc_path = $base . 'core/calendar/PersianCalendar/bootstrap.php';
+        if (file_exists($pc_path)) {
+            require_once $pc_path;
+        }
     }
 
     private function init_hooks() {
         register_activation_hook(B2B_PROCUREMENT_PLUGIN_FILE, array('B2B_Procurement_Activator', 'activate'));
         register_deactivation_hook(B2B_PROCUREMENT_PLUGIN_FILE, array('B2B_Procurement_Deactivator', 'deactivate'));
         add_action('plugins_loaded', array($this, 'init'));
+
+        // Init Persian Calendar
+        add_action('plugins_loaded', function () {
+            if (class_exists('B2B_Persian_Calendar')) {
+                B2B_Persian_Calendar::instance()->init();
+            }
+        }, 5);
     }
 
     public function init() {

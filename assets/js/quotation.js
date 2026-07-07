@@ -152,6 +152,7 @@
 
         // ==================== ITEMS ====================
         addItem: function () {
+            var self = this;
             var rfqId = $('#rfq-select').val();
             if (!rfqId) { B2BAdmin.toast('ابتدا درخواست خرید را انتخاب کنید', 'warning'); return; }
 
@@ -244,11 +245,7 @@
         },
 
         // ==================== INIT ====================
-        init: function () {
-            if ($('#quotation-search').length) this.initSearch();
-            if ($('#quotation-form').length) this.initForm();
-            if ($('#comparison-container').length) this.loadComparison();
-        }
+        
     };
 
     $(document).ready(function () { B2BQuotation.init(); });

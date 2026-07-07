@@ -216,7 +216,6 @@ class B2B_Procurement_Admin {
             'b2b-contract-detail' => 'جزئیات قرارداد',
             'b2b-notifications' => 'اعلان‌ها',
             'b2b-notification-detail' => 'جزئیات اعلان',
-            'b2b-dashboard' => 'داشبورد مدیریت',
             'b2b-report-rfqs' => 'گزارش درخواست‌ها',
             'b2b-report-pos' => 'گزارش سفارشات',
             'b2b-report-contracts' => 'گزارش قراردادها',
@@ -274,6 +273,7 @@ class B2B_Procurement_Admin {
     public static function render_shell_header() {
         $page_title = self::get_page_title();
         $user = wp_get_current_user();
+        $unread = B2B_Notification_DB::get_unread_count(get_current_user_id());
         ?>
         <header class="b2b-header">
             <div class="b2b-header-right">

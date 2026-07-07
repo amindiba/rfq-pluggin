@@ -110,7 +110,11 @@ class B2B_Rfq_Admin {
                     </div>
                     <div class="b2b-form-field">
                         <label class="b2b-form-label">مهلت پیشنهاد قیمت <span class="b2b-required">*</span></label>
-                        <input type="date" name="deadline" class="b2b-input" required value="<?php echo $rfq ? esc_attr($rfq->deadline) : ''; ?>" <?php echo !$can_edit ? 'disabled' : ''; ?> />
+                        <?php B2B_PC_Persian_Datepicker::render('deadline', $rfq ? esc_attr($rfq->deadline) : '', array(
+                            'required' => !$can_edit,
+                            'disabled' => !$can_edit,
+                            'placeholder' => 'انتخاب تاریخ مهلت',
+                        )); ?>
                     </div>
                 </div>
             </div>
@@ -207,7 +211,7 @@ class B2B_Rfq_Admin {
                 <div class="b2b-card-grid b2b-card-grid-3">
                     <div><strong>شماره مرجع:</strong> <?php echo esc_html($rfq->reference); ?></div>
                     <div><strong>وضعیت:</strong> <span class="b2b-badge <?php echo $status_info[1]; ?>"><?php echo $status_info[0]; ?></span></div>
-                    <div><strong>مهلت:</strong> <?php echo esc_html($rfq->deadline); ?></div>
+                    <div><strong>مهلت:</strong> <?php echo esc_html($rfq->deadline ? B2B_PC_Formatter::format_gregorian($rfq->deadline, 'long') : '-'); ?></div>
                     <div><strong>تاریخ ایجاد:</strong> <?php echo esc_html($rfq->created_at); ?></div>
                     <div><strong>تاریخ ارسال:</strong> <?php echo esc_html($rfq->submitted_at ?: '-'); ?></div>
                     <div><strong>تاریخ بستن:</strong> <?php echo esc_html($rfq->closed_at ?: '-'); ?></div>

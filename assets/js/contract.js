@@ -146,10 +146,7 @@
             });
         },
 
-        init: function () {
-            if ($('#contract-search').length) this.initSearch();
-            if ($('#contract-form').length) this.initForm();
-        }
+        
     };
 
     $(document).ready(function () { B2BContract.init(); });

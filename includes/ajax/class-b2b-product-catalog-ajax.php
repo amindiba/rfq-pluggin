@@ -13,6 +13,7 @@ class B2B_Product_Catalog_Ajax {
         add_action('wp_ajax_b2b_catalog_move_category', array(__CLASS__, 'move_category'));
         add_action('wp_ajax_b2b_catalog_export_categories', array(__CLASS__, 'export_categories'));
         add_action('wp_ajax_b2b_catalog_import_categories', array(__CLASS__, 'import_categories'));
+        add_action('wp_ajax_b2b_get_thumb', array(__CLASS__, 'get_thumb'));
         add_action('wp_ajax_b2b_catalog_bulk_products', array(__CLASS__, 'bulk_products'));
         add_action('wp_ajax_b2b_catalog_clone_product', array(__CLASS__, 'clone_product'));
         add_action('wp_ajax_b2b_catalog_export_products', array(__CLASS__, 'export_products'));
@@ -495,5 +496,24 @@ class B2B_Product_Catalog_Ajax {
             'imported' => $imported,
             'skipped' => $skipped,
         ));
+    }
+
+    public static function get_thumb() {
+        $id = intval($_GET['id'] ?? 0);
+        if ($id) {
+            $src = wp_get_attachment_image_src($id, 'thumbnail');
+            if ($src) {
+                header('Content-Type: image/jpeg');
+                header('Cache-Control: public, max-age=86400');
+                // Redirect to actual image URL
+                wp_redirect($src[0]);
+                exit;
+            }
+        }
+        // Return 1x1 transparent pixel if not found
+        header('Content-Type: image/gif');
+        header('Cache-Control: public, max-age=3600');
+        echo base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+        exit;
     }
 }

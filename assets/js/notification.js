@@ -104,9 +104,7 @@
             }).fail(function () { B2BAdmin.toast('خطا در ارتباط با سرور', 'error'); });
         },
 
-        init: function () {
-            if ($('#notification-filter').length) this.initSearch();
-        }
+        
     };
 
     $(document).ready(function () { B2BNotification.init(); });
