@@ -1,0 +1,113 @@
+/**
+ * B2B Enterprise UI - Base Reset & Foundation
+ * Version: 1.0.0
+ */
+
+/* ===== RESET ===== */
+.b2b-ui *, .b2b-ui *::before, .b2b-ui *::after {
+    box-sizing: border-box;
+}
+
+.b2b-ui {
+    font-family: var(--b2b-font-family);
+    font-size: var(--b2b-text-base);
+    line-height: var(--b2b-leading-normal);
+    color: var(--b2b-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    direction: rtl;
+    text-align: right;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.b2b-ui h1, .b2b-ui h2, .b2b-ui h3, .b2b-ui h4, .b2b-ui h5, .b2b-ui h6 {
+    font-weight: var(--b2b-font-semibold);
+    color: var(--b2b-text);
+    line-height: var(--b2b-leading-tight);
+    margin: 0;
+}
+
+.b2b-ui h1 { font-size: var(--b2b-text-3xl); }
+.b2b-ui h2 { font-size: var(--b2b-text-2xl); }
+.b2b-ui h3 { font-size: var(--b2b-text-xl); }
+.b2b-ui h4 { font-size: var(--b2b-text-lg); }
+.b2b-ui h5 { font-size: var(--b2b-text-md); }
+.b2b-ui h6 { font-size: var(--b2b-text-base); }
+
+.b2b-ui p {
+    margin: 0 0 var(--b2b-space-4) 0;
+    color: var(--b2b-text-secondary);
+}
+
+.b2b-ui a {
+    color: var(--b2b-text-link);
+    text-decoration: none;
+    transition: color var(--b2b-duration-fast) var(--b2b-ease-default);
+}
+
+.b2b-ui a:hover {
+    color: var(--b2b-text-link-hover);
+}
+
+.b2b-ui strong { font-weight: var(--b2b-font-bold); }
+.b2b-ui small { font-size: var(--b2b-text-xs); }
+
+/* ===== LISTS ===== */
+.b2b-ui ul, .b2b-ui ol {
+    margin: 0;
+    padding-right: var(--b2b-space-5);
+}
+
+.b2b-ui li {
+    margin-bottom: var(--b2b-space-1);
+    line-height: var(--b2b-leading-relaxed);
+}
+
+/* ===== TABLE ===== */
+.b2b-ui table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* ===== FORM ===== */
+.b2b-ui input, .b2b-ui textarea, .b2b-ui select, .b2b-ui button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* ===== SCROLLBAR ===== */
+.b2b-ui::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.b2b-ui::-webkit-scrollbar-track {
+    background: var(--b2b-surface-container);
+}
+
+.b2b-ui::-webkit-scrollbar-thumb {
+    background: var(--b2b-secondary-300);
+    border-radius: var(--b2b-radius-full);
+}
+
+.b2b-ui::-webkit-scrollbar-thumb:hover {
+    background: var(--b2b-secondary-400);
+}
+
+/* ===== SELECTION ===== */
+.b2b-ui ::selection {
+    background: var(--b2b-primary-200);
+    color: var(--b2b-primary-900);
+}
+
+/* ===== FOCUS ===== */
+.b2b-ui :focus-visible {
+    outline: 2px solid var(--b2b-border-focus);
+    outline-offset: 2px;
+}
+
+/* ===== RTL ===== */
+.b2b-ui [dir="ltr"], .b2b-ui.ltr {
+    direction: ltr;
+    text-align: left;
+}

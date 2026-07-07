@@ -1,0 +1,88 @@
+/**
+ * B2B Enterprise UI - Animation Engine
+ * Version: 1.0.0
+ */
+
+/* ===== FADE ===== */
+.b2b-fade-enter { animation: b2bFadeIn var(--b2b-duration-normal) var(--b2b-ease-out) forwards; }
+.b2b-fade-exit { animation: b2bFadeOut var(--b2b-duration-fast) var(--b2b-ease-in) forwards; }
+
+@keyframes b2bFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes b2bFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* ===== SLIDE ===== */
+.b2b-slide-up-enter { animation: b2bSlideUp var(--b2b-duration-normal) var(--b2b-ease-out) forwards; }
+.b2b-slide-down-enter { animation: b2bSlideDown var(--b2b-duration-normal) var(--b2b-ease-out) forwards; }
+.b2b-slide-left-enter { animation: b2bSlideLeft var(--b2b-duration-normal) var(--b2b-ease-out) forwards; }
+.b2b-slide-right-enter { animation: b2bSlideRight var(--b2b-duration-normal) var(--b2b-ease-out) forwards; }
+
+@keyframes b2bSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes b2bSlideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes b2bSlideLeft {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes b2bSlideRight {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== SCALE ===== */
+.b2b-scale-enter { animation: b2bScaleIn var(--b2b-duration-normal) var(--b2b-ease-bounce) forwards; }
+
+@keyframes b2bScaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== COLLAPSE ===== */
+.b2b-collapse { overflow: hidden; transition: max-height var(--b2b-duration-slow) var(--b2b-ease-default); }
+.b2b-collapse.collapsed { max-height: 0; }
+.b2b-collapse.expanded { max-height: 1000px; }
+
+/* ===== SPIN ===== */
+.b2b-spin { animation: b2bSpin 0.7s linear infinite; }
+
+@keyframes b2bSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===== PULSE ===== */
+.b2b-pulse { animation: b2bPulse 2s var(--b2b-ease-in-out) infinite; }
+
+@keyframes b2bPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ===== SHAKE ===== */
+.b2b-shake { animation: b2bShake 0.5s var(--b2b-ease-default); }
+
+@keyframes b2bShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ===== HOVER TRANSITIONS ===== */
+.b2b-transition-all { transition: all var(--b2b-duration-fast) var(--b2b-ease-default); }
+.b2b-transition-colors { transition: color var(--b2b-duration-fast), background-color var(--b2b-duration-fast), border-color var(--b2b-duration-fast); }
+.b2b-transition-transform { transition: transform var(--b2b-duration-fast) var(--b2b-ease-default); }
+.b2b-transition-shadow { transition: box-shadow var(--b2b-duration-fast) var(--b2b-ease-default); }

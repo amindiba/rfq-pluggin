@@ -1,0 +1,208 @@
+/**
+ * B2B Enterprise UI - Design Tokens
+ * Version: 1.0.0
+ * Centralized design variables for all components
+ */
+
+:root {
+    /* ===== COLORS - Primary ===== */
+    --b2b-primary: #7B2CBF;
+    --b2b-primary-50: #FAF7FF;
+    --b2b-primary-100: #F3E8FF;
+    --b2b-primary-200: #E9D5FF;
+    --b2b-primary-300: #D8B4FE;
+    --b2b-primary-400: #C084FC;
+    --b2b-primary-500: #A855F7;
+    --b2b-primary-600: #9333EA;
+    --b2b-primary-700: #7E22CE;
+    --b2b-primary-800: #6B21A8;
+    --b2b-primary-900: #581C87;
+
+    /* ===== COLORS - Secondary ===== */
+    --b2b-secondary: #9D4EDD;
+    --b2b-secondary-50: #FAF7FF;
+    --b2b-secondary-100: #F3E8FF;
+    --b2b-secondary-200: #E9D5FF;
+    --b2b-secondary-300: #D8B4FE;
+    --b2b-secondary-400: #C084FC;
+    --b2b-secondary-500: #A855F7;
+    --b2b-secondary-600: #9333EA;
+    --b2b-secondary-700: #7E22CE;
+    --b2b-secondary-800: #6B21A8;
+    --b2b-secondary-900: #581C87;
+
+    /* ===== COLORS - Success ===== */
+    --b2b-success: #22C55E;
+    --b2b-success-50: #F0FDF4;
+    --b2b-success-100: #DCFCE7;
+    --b2b-success-200: #BBF7D0;
+    --b2b-success-300: #86EFAC;
+    --b2b-success-400: #4ADE80;
+    --b2b-success-500: #22C55E;
+    --b2b-success-600: #16A34A;
+    --b2b-success-700: #15803D;
+
+    /* ===== COLORS - Warning ===== */
+    --b2b-warning: #F59E0B;
+    --b2b-warning-50: #FFFBEB;
+    --b2b-warning-100: #FEF3C7;
+    --b2b-warning-200: #FDE68A;
+    --b2b-warning-300: #FCD34D;
+    --b2b-warning-400: #FFC940;
+    --b2b-warning-500: #E6A800;
+    --b2b-warning-600: #A56700;
+    --b2b-warning-700: #7A4B00;
+
+    /* ===== COLORS - Danger ===== */
+    --b2b-danger: #EF4444;
+    --b2b-danger-50: #FEF2F2;
+    --b2b-danger-100: #FEE2E2;
+    --b2b-danger-200: #FECACA;
+    --b2b-danger-300: #FCA5A5;
+    --b2b-danger-400: #F87171;
+    --b2b-danger-500: #EF4444;
+    --b2b-danger-600: #DC2626;
+    --b2b-danger-700: #B91C1C;
+
+    /* ===== COLORS - Info ===== */
+    --b2b-info: #3B82F6;
+    --b2b-info-50: #EFF6FF;
+    --b2b-info-100: #DBEAFE;
+    --b2b-info-200: #BFDBFE;
+    --b2b-info-300: #93C5FD;
+    --b2b-info-400: #9D4EDD;
+    --b2b-info-500: #7B2CBF;
+    --b2b-info-600: #5A189A;
+    --b2b-info-700: #3C096C;
+
+    /* ===== COLORS - Surface ===== */
+    --b2b-surface: #FFFFFF;
+    --b2b-surface-dim: #FAF7FF;
+    --b2b-surface-bright: #FFFFFF;
+    --b2b-surface-container: #F5F0FF;
+    --b2b-surface-container-high: #ECE6F8;
+    --b2b-surface-container-highest: #DDD5F0;
+
+    /* ===== COLORS - Background ===== */
+    --b2b-bg: #FAF7FF;
+    --b2b-bg-elevated: #FFFFFF;
+    --b2b-bg-sunken: #F3EEFF;
+
+    /* ===== COLORS - Border ===== */
+    --b2b-border: #ECE6F8;
+    --b2b-border-light: #F3EEFF;
+    --b2b-border-strong: #DDD5F0;
+    --b2b-border-focus: #9D4EDD;
+
+    /* ===== COLORS - Text ===== */
+    --b2b-text: #1F2937;
+    --b2b-text-secondary: #6B7280;
+    --b2b-text-tertiary: #9CA3AF;
+    --b2b-text-inverse: #FFFFFF;
+    --b2b-text-link: #7B2CBF;
+    --b2b-text-link-hover: #6B21A8;
+
+    /* ===== SHADOWS ===== */
+    --b2b-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --b2b-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --b2b-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --b2b-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --b2b-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+    /* ===== BORDER RADIUS ===== */
+    --b2b-radius-none: 0;
+    --b2b-radius-xs: 4px;
+    --b2b-radius-sm: 6px;
+    --b2b-radius-md: 8px;
+    --b2b-radius-lg: 12px;
+    --b2b-radius-xl: 16px;
+    --b2b-radius-2xl: 20px;
+    --b2b-radius-full: 9999px;
+
+    /* ===== SPACING SCALE ===== */
+    --b2b-space-0: 0;
+    --b2b-space-px: 1px;
+    --b2b-space-0-5: 2px;
+    --b2b-space-1: 4px;
+    --b2b-space-1-5: 6px;
+    --b2b-space-2: 8px;
+    --b2b-space-2-5: 10px;
+    --b2b-space-3: 12px;
+    --b2b-space-3-5: 14px;
+    --b2b-space-4: 16px;
+    --b2b-space-5: 20px;
+    --b2b-space-6: 24px;
+    --b2b-space-7: 28px;
+    --b2b-space-8: 32px;
+    --b2b-space-9: 36px;
+    --b2b-space-10: 40px;
+    --b2b-space-12: 48px;
+    --b2b-space-14: 56px;
+    --b2b-space-16: 64px;
+    --b2b-space-20: 80px;
+
+    /* ===== TYPOGRAPHY SCALE ===== */
+    --b2b-font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --b2b-font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+
+    --b2b-text-xs: 0.75rem;
+    --b2b-text-sm: 0.8125rem;
+    --b2b-text-base: 0.875rem;
+    --b2b-text-md: 1rem;
+    --b2b-text-lg: 1.125rem;
+    --b2b-text-xl: 1.25rem;
+    --b2b-text-2xl: 1.5rem;
+    --b2b-text-3xl: 1.875rem;
+    --b2b-text-4xl: 2.25rem;
+
+    --b2b-leading-none: 1;
+    --b2b-leading-tight: 1.25;
+    --b2b-leading-snug: 1.375;
+    --b2b-leading-normal: 1.5;
+    --b2b-leading-relaxed: 1.625;
+    --b2b-leading-loose: 2;
+
+    --b2b-tracking-tight: -0.025em;
+    --b2b-tracking-normal: 0;
+    --b2b-tracking-wide: 0.025em;
+    --b2b-tracking-wider: 0.05em;
+
+    /* ===== FONT WEIGHT ===== */
+    --b2b-font-normal: 400;
+    --b2b-font-medium: 500;
+    --b2b-font-semibold: 600;
+    --b2b-font-bold: 700;
+
+    /* ===== ANIMATION ===== */
+    --b2b-duration-fastest: 100ms;
+    --b2b-duration-fast: 150ms;
+    --b2b-duration-normal: 200ms;
+    --b2b-duration-slow: 250ms;
+    --b2b-duration-slower: 350ms;
+    --b2b-duration-slowest: 500ms;
+
+    --b2b-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+    --b2b-ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --b2b-ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --b2b-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --b2b-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ===== Z-INDEX ===== */
+    --b2b-z-base: 0;
+    --b2b-z-dropdown: 1000;
+    --b2b-z-sticky: 1020;
+    --b2b-z-fixed: 1030;
+    --b2b-z-drawer: 1040;
+    --b2b-z-modal-backdrop: 1050;
+    --b2b-z-modal: 1060;
+    --b2b-z-popover: 1070;
+    --b2b-z-tooltip: 1080;
+    --b2b-z-toast: 1090;
+
+    /* ===== BREAKPOINTS (for reference) ===== */
+    --b2b-breakpoint-sm: 640px;
+    --b2b-breakpoint-md: 768px;
+    --b2b-breakpoint-lg: 1024px;
+    --b2b-breakpoint-xl: 1280px;
+    --b2b-breakpoint-2xl: 1536px;
+}

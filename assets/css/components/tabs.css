@@ -1,0 +1,108 @@
+/**
+ * B2B Enterprise UI - Tabs & Accordion
+ * Version: 1.0.0
+ */
+
+/* ===== TABS ===== */
+.b2b-tabs-nav {
+    border-bottom: 2px solid var(--b2b-border);
+    margin-bottom: var(--b2b-space-5);
+}
+
+.b2b-tabs-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.b2b-tabs-nav li a,
+.b2b-tabs-nav li span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: var(--b2b-space-3) var(--b2b-space-4);
+    text-decoration: none;
+    color: var(--b2b-text-secondary);
+    font-weight: var(--b2b-font-medium);
+    font-size: var(--b2b-text-sm);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all var(--b2b-duration-fastest);
+    cursor: pointer;
+}
+
+.b2b-tabs-nav li a:hover,
+.b2b-tabs-nav li span:hover {
+    color: var(--b2b-text);
+    background: var(--b2b-surface-dim);
+}
+
+.b2b-tabs-nav .b2b-tab-active a,
+.b2b-tabs-nav .b2b-tab-active > span {
+    color: var(--b2b-primary);
+    border-bottom-color: var(--b2b-primary);
+}
+
+.b2b-tab-badge {
+    background: var(--b2b-surface-container-high);
+    padding: 2px 8px;
+    border-radius: var(--b2b-radius-full);
+    font-size: 11px;
+    font-weight: var(--b2b-font-semibold);
+}
+
+.b2b-tabs-content {
+    min-height: 200px;
+}
+
+/* ===== ACCORDION ===== */
+.b2b-accordion {
+    border: 1px solid var(--b2b-border);
+    border-radius: var(--b2b-radius-lg);
+    overflow: hidden;
+}
+
+.b2b-accordion-item {
+    border-bottom: 1px solid var(--b2b-border);
+}
+
+.b2b-accordion-item:last-child {
+    border-bottom: none;
+}
+
+.b2b-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--b2b-space-4) var(--b2b-space-5);
+    background: var(--b2b-surface);
+    cursor: pointer;
+    transition: background var(--b2b-duration-fastest);
+    font-weight: var(--b2b-font-medium);
+}
+
+.b2b-accordion-header:hover {
+    background: var(--b2b-surface-dim);
+}
+
+.b2b-accordion-icon {
+    transition: transform var(--b2b-duration-fast);
+}
+
+.b2b-accordion.is-open .b2b-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.b2b-accordion-body {
+    padding: 0 var(--b2b-space-5);
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--b2b-duration-normal) var(--b2b-ease-default);
+}
+
+.b2b-accordion.is-open .b2b-accordion-body {
+    padding: var(--b2b-space-4) var(--b2b-space-5);
+    max-height: 500px;
+}

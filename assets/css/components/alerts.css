@@ -1,0 +1,223 @@
+/**
+ * B2B Enterprise UI - Alerts, Toast, Badges
+ * Version: 1.0.0
+ */
+
+/* ===== ALERT ===== */
+.b2b-alert {
+    padding: var(--b2b-space-3-5) var(--b2b-space-4);
+    border-radius: var(--b2b-radius-md);
+    margin-bottom: var(--b2b-space-4);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--b2b-space-3);
+}
+
+.b2b-alert p { margin: 0; flex: 1; }
+.b2b-alert-info { background: var(--b2b-info-50); border-color: var(--b2b-info); color: var(--b2b-info-700); }
+.b2b-alert-success { background: var(--b2b-success-50); border-color: var(--b2b-success); color: var(--b2b-success-700); }
+.b2b-alert-warning { background: var(--b2b-warning-50); border-color: var(--b2b-warning); color: var(--b2b-warning-700); }
+.b2b-alert-danger { background: var(--b2b-danger-50); border-color: var(--b2b-danger); color: var(--b2b-danger-700); }
+
+/* ===== TOAST ===== */
+.b2b-toast-container {
+    position: fixed;
+    top: var(--b2b-space-12);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: var(--b2b-z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--b2b-space-2);
+    pointer-events: none;
+}
+
+.b2b-toast {
+    display: flex;
+    align-items: center;
+    gap: var(--b2b-space-3);
+    padding: var(--b2b-space-3) var(--b2b-space-5);
+    background: var(--b2b-secondary-800);
+    color: var(--b2b-text-inverse);
+    border-radius: var(--b2b-radius-md);
+    box-shadow: var(--b2b-shadow-lg);
+    font-size: var(--b2b-text-sm);
+    font-weight: var(--b2b-font-medium);
+    pointer-events: auto;
+    animation: b2bToastIn var(--b2b-duration-normal) var(--b2b-ease-default);
+}
+
+.b2b-toast-success { background: var(--b2b-success); }
+.b2b-toast-error { background: var(--b2b-danger); }
+.b2b-toast-warning { background: var(--b2b-warning); }
+.b2b-toast-info { background: var(--b2b-info); }
+
+@keyframes b2bToastIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== BADGE ===== */
+.b2b-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: var(--b2b-radius-full);
+    font-size: 11px;
+    font-weight: var(--b2b-font-semibold);
+    line-height: 1.4;
+}
+
+.b2b-badge-default { background: var(--b2b-surface-container); color: var(--b2b-text-secondary); }
+.b2b-badge-primary { background: var(--b2b-primary-50); color: var(--b2b-primary-700); }
+.b2b-badge-success { background: var(--b2b-success-50); color: var(--b2b-success-700); }
+.b2b-badge-warning { background: var(--b2b-warning-50); color: var(--b2b-warning-700); }
+.b2b-badge-danger { background: var(--b2b-danger-50); color: var(--b2b-danger-700); }
+.b2b-badge-info { background: var(--b2b-info-50); color: var(--b2b-info-700); }
+
+/* ===== STATUS PILL ===== */
+.b2b-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: var(--b2b-font-medium);
+    font-size: var(--b2b-text-sm);
+}
+
+.b2b-status-pill::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.b2b-status-pill-active { color: var(--b2b-success); }
+.b2b-status-pill-active::before { background: var(--b2b-success); }
+.b2b-status-pill-inactive { color: var(--b2b-text-tertiary); }
+.b2b-status-pill-inactive::before { background: var(--b2b-text-tertiary); }
+.b2b-status-pill-error { color: var(--b2b-danger); }
+.b2b-status-pill-error::before { background: var(--b2b-danger); }
+.b2b-status-pill-warning { color: var(--b2b-warning); }
+.b2b-status-pill-warning::before { background: var(--b2b-warning); }
+
+/* ===== AVATAR ===== */
+.b2b-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--b2b-primary-50);
+    color: var(--b2b-primary);
+    font-weight: var(--b2b-font-semibold);
+}
+
+.b2b-avatar-sm { width: 32px; height: 32px; font-size: 12px; }
+.b2b-avatar-md { width: 40px; height: 40px; font-size: 14px; }
+.b2b-avatar-lg { width: 56px; height: 56px; font-size: 18px; }
+
+/* ===== PROGRESS ===== */
+.b2b-progress {
+    height: 6px;
+    background: var(--b2b-surface-container-high);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.b2b-progress-bar {
+    height: 100%;
+    background: var(--b2b-primary);
+    border-radius: 3px;
+    transition: width var(--b2b-duration-slow) var(--b2b-ease-default);
+}
+
+/* ===== SPINNER ===== */
+.b2b-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: b2bSpin 0.7s linear infinite;
+}
+
+.b2b-spinner-lg { width: 32px; height: 32px; border-width: 3px; }
+
+@keyframes b2bSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== SKELETON ===== */
+.b2b-skeleton {
+    background: linear-gradient(90deg, var(--b2b-surface-container) 25%, var(--b2b-surface-dim) 50%, var(--b2b-surface-container) 75%);
+    background-size: 200% 100%;
+    animation: b2bSkeleton 1.5s ease-in-out infinite;
+    border-radius: var(--b2b-radius-md);
+}
+
+@keyframes b2bSkeleton {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== EMPTY STATE ===== */
+.b2b-empty-state {
+    text-align: center;
+    padding: var(--b2b-space-12) var(--b2b-space-6);
+    background: var(--b2b-surface);
+    border-radius: var(--b2b-radius-lg);
+    border: 2px dashed var(--b2b-border);
+}
+
+.b2b-empty-state-icon { font-size: 48px; margin-bottom: var(--b2b-space-4); opacity: 0.4; }
+.b2b-empty-state-text { color: var(--b2b-text-secondary); font-size: var(--b2b-text-md); margin: 0 0 var(--b2b-space-4) 0; }
+
+/* ===== LOADING OVERLAY ===== */
+.b2b-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+/* ===== TOOLTIP ===== */
+.b2b-tooltip {
+    position: relative;
+}
+
+.b2b-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    padding: 6px 12px;
+    background: var(--b2b-secondary-800);
+    color: var(--b2b-text-inverse);
+    font-size: 11px;
+    font-weight: 400;
+    white-space: nowrap;
+    border-radius: var(--b2b-radius-md);
+    box-shadow: var(--b2b-shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--b2b-duration-fastest) var(--b2b-ease-default);
+    z-index: var(--b2b-z-tooltip);
+    pointer-events: none;
+    direction: rtl;
+}
+
+.b2b-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}

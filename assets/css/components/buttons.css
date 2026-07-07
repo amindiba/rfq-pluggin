@@ -1,0 +1,122 @@
+/**
+ * B2B Enterprise UI - Buttons
+ * Version: 1.0.0
+ */
+
+.b2b-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--b2b-space-2);
+    padding: var(--b2b-space-2) var(--b2b-space-4);
+    border: 1px solid transparent;
+    border-radius: var(--b2b-radius-md);
+    font-family: var(--b2b-font-family);
+    font-size: var(--b2b-text-sm);
+    font-weight: var(--b2b-font-medium);
+    line-height: var(--b2b-leading-normal);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--b2b-duration-fast) var(--b2b-ease-default);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.b2b-btn:hover {
+    background: var(--b2b-primary-light);
+    border-color: var(--b2b-primary-light);
+    color: #FFFFFF;
+}
+
+.b2b-btn:focus-visible {
+    outline: 2px solid var(--b2b-border-focus);
+    outline-offset: 2px;
+}
+
+.b2b-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Primary */
+.b2b-btn-primary {
+    background: var(--b2b-primary-50);
+    border-color: var(--b2b-primary-200);
+    color: var(--b2b-primary);
+}
+
+.b2b-btn-primary:hover {
+    background: var(--b2b-primary-100);
+    border-color: var(--b2b-primary-300);
+    color: var(--b2b-primary-dark);
+}
+
+/* Secondary */
+.b2b-btn-secondary {
+    background: var(--b2b-surface-container);
+    border-color: var(--b2b-border);
+    color: var(--b2b-text-secondary);
+}
+
+.b2b-btn-secondary:hover {
+    background: var(--b2b-primary-50);
+    border-color: var(--b2b-primary-200);
+    color: var(--b2b-primary);
+}
+
+/* Danger */
+.b2b-btn-danger {
+    background: var(--b2b-danger-light);
+    border-color: var(--b2b-danger-200);
+    color: var(--b2b-danger);
+}
+
+.b2b-btn-danger:hover {
+    background: var(--b2b-danger);
+    border-color: var(--b2b-danger);
+    color: #FFFFFF;
+}
+
+/* Ghost */
+.b2b-btn-ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--b2b-text-secondary);
+}
+
+.b2b-btn-ghost:hover {
+    background: var(--b2b-primary-50);
+    color: var(--b2b-primary);
+}
+
+/* Link */
+.b2b-btn-link {
+    background: none;
+    border: none;
+    color: var(--b2b-text-link);
+    padding: 0;
+    height: auto;
+}
+
+.b2b-btn-link:hover {
+    color: var(--b2b-text-link-hover);
+    text-decoration: underline;
+}
+
+/* Sizes */
+.b2b-btn-xs { padding: var(--b2b-space-1) var(--b2b-space-2); font-size: var(--b2b-text-xs); }
+.b2b-btn-sm { padding: var(--b2b-space-1-5) var(--b2b-space-3); font-size: var(--b2b-text-xs); }
+.b2b-btn-lg { padding: var(--b2b-space-3) var(--b2b-space-6); font-size: var(--b2b-text-md); }
+.b2b-btn-xl { padding: var(--b2b-space-4) var(--b2b-space-8); font-size: var(--b2b-text-lg); }
+
+/* Icon Button */
+.b2b-btn-icon {
+    padding: var(--b2b-space-2);
+    width: 36px;
+    height: 36px;
+}
+
+/* With Icon */
+.b2b-btn-icon-left::before { content: ''; }
+.b2b-btn-icon-right::after { content: ''; }

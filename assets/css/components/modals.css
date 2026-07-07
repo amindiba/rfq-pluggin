@@ -1,0 +1,136 @@
+/**
+ * B2B Enterprise UI - Modal & Dialog
+ * Version: 1.0.0
+ */
+
+.b2b-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--b2b-z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--b2b-duration-normal) var(--b2b-ease-default);
+}
+
+.b2b-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.b2b-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.b2b-modal-dialog {
+    position: relative;
+    background: var(--b2b-surface);
+    border-radius: var(--b2b-radius-xl);
+    width: 90%;
+    max-height: 85vh;
+    overflow: hidden;
+    box-shadow: var(--b2b-shadow-xl);
+    transform: scale(0.95) translateY(10px);
+    transition: transform var(--b2b-duration-normal) var(--b2b-ease-default);
+}
+
+.b2b-modal.is-active .b2b-modal-dialog {
+    transform: scale(1) translateY(0);
+}
+
+.b2b-modal-sm .b2b-modal-dialog { max-width: 400px; }
+.b2b-modal-md .b2b-modal-dialog { max-width: 560px; }
+.b2b-modal-lg .b2b-modal-dialog { max-width: 720px; }
+.b2b-modal-xl .b2b-modal-dialog { max-width: 960px; }
+
+.b2b-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--b2b-space-4) var(--b2b-space-5);
+    border-bottom: 1px solid var(--b2b-border);
+}
+
+.b2b-modal-title {
+    margin: 0;
+    font-size: var(--b2b-text-md);
+    font-weight: var(--b2b-font-semibold);
+}
+
+.b2b-modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--b2b-text-tertiary);
+    padding: var(--b2b-space-1);
+    line-height: 1;
+    border-radius: var(--b2b-radius-sm);
+    transition: all var(--b2b-duration-fastest);
+}
+
+.b2b-modal-close:hover {
+    background: var(--b2b-surface-container);
+    color: var(--b2b-text);
+}
+
+.b2b-modal-body {
+    padding: var(--b2b-space-5);
+    overflow-y: auto;
+    max-height: calc(85vh - 130px);
+}
+
+.b2b-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--b2b-space-3);
+    padding: var(--b2b-space-3-5) var(--b2b-space-5);
+    border-top: 1px solid var(--b2b-border);
+    background: var(--b2b-surface-dim);
+}
+
+/* Drawer */
+.b2b-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--b2b-surface);
+    box-shadow: var(--b2b-shadow-xl);
+    z-index: var(--b2b-z-drawer);
+    transition: right var(--b2b-duration-normal) var(--b2b-ease-default);
+}
+
+.b2b-drawer.is-active {
+    right: 0;
+}
+
+.b2b-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.4);
+    z-index: calc(var(--b2b-z-drawer) - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--b2b-duration-normal);
+}
+
+.b2b-drawer.is-active ~ .b2b-drawer-overlay {
+    opacity: 1;
+    visibility: visible;
+}

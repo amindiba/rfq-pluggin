@@ -1,0 +1,78 @@
+<?php
+namespace B2B\DynamicSpecs\Database;
+
+defined('ABSPATH') || exit;
+
+class SpecValue_DB {
+
+    private static function table() {
+        global $wpdb;
+        return $wpdb->prefix . 'b2b_product_spec_values';
+    }
+
+    public static function create_table() {
+        global $wpdb;
+        $table = self::table();
+        $charset = $wpdb->get_charset_collate();
+        $sql = "CREATE TABLE IF NOT EXISTS {$table} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            product_id BIGINT UNSIGNED NOT NULL,
+            spec_id BIGINT UNSIGNED NOT NULL,
+            spec_key VARCHAR(100) NOT NULL,
+            value TEXT,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (id),
+            KEY idx_product (product_id),
+            KEY idx_spec (spec_id)
+        ) {$charset};";
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        dbDelta($sql);
+    }
+
+    public static function save_values($product_id, $specs, $values) {
+        foreach ($specs as $spec) {
+            $val = isset($values[$spec->field_key]) ? $values[$spec->field_key] : '';
+            if (is_array($val)) $val = wp_json_encode($val);
+            $val = sanitize_text_field($val);
+
+            global $wpdb;
+            $table = self::table();
+            $existing = $wpdb->get_var($wpdb->prepare(
+                "SELECT id FROM {$table} WHERE product_id = %d AND spec_key = %s",
+                intval($product_id), $spec->field_key
+            ));
+
+            if ($existing) {
+                $wpdb->update($table, array('value' => $val, 'updated_at' => current_time('mysql')), array('id' => intval($existing)));
+            } else {
+                $wpdb->insert($table, array(
+                    'product_id' => intval($product_id),
+                    'spec_id'    => intval($spec->id),
+                    'spec_key'   => $spec->field_key,
+                    'value'      => $val,
+                ));
+            }
+        }
+    }
+
+    public static function get_values($product_id) {
+        global $wpdb;
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT spec_key, value FROM " . self::table() . " WHERE product_id = %d",
+            intval($product_id)
+        ));
+        $result = array();
+        if ($rows) {
+            foreach ($rows as $row) {
+                $result[$row->spec_key] = $row->value;
+            }
+        }
+        return $result;
+    }
+
+    public static function delete_by_product($product_id) {
+        global $wpdb;
+        return $wpdb->delete(self::table(), array('product_id' => intval($product_id)));
+    }
+}

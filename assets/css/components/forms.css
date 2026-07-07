@@ -1,0 +1,104 @@
+/**
+ * B2B Enterprise UI - Form Components
+ * Version: 1.0.0
+ */
+
+.b2b-form { max-width: 600px; }
+.b2b-form-field { margin-bottom: var(--b2b-space-5); }
+.b2b-form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--b2b-space-4); }
+
+.b2b-form-label {
+    display: block;
+    margin-bottom: var(--b2b-space-1-5);
+    font-weight: var(--b2b-font-medium);
+    color: var(--b2b-text-secondary);
+    font-size: var(--b2b-text-sm);
+}
+
+.b2b-required { color: var(--b2b-danger); }
+
+.b2b-input, .b2b-textarea, .b2b-select {
+    width: 100%;
+    padding: var(--b2b-space-2) var(--b2b-space-3);
+    border: 1px solid var(--b2b-border);
+    border-radius: var(--b2b-radius-md);
+    font-family: var(--b2b-font-family);
+    font-size: var(--b2b-text-sm);
+    color: var(--b2b-text);
+    background: var(--b2b-surface);
+    transition: all var(--b2b-duration-fastest);
+}
+
+.b2b-input:focus, .b2b-textarea:focus, .b2b-select:focus {
+    outline: none;
+    border-color: var(--b2b-border-focus);
+    box-shadow: 0 0 0 3px var(--b2b-primary-50);
+}
+
+.b2b-input::placeholder, .b2b-textarea::placeholder {
+    color: var(--b2b-text-tertiary);
+}
+
+.b2b-textarea { min-height: 80px; resize: vertical; }
+
+.b2b-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 14px;
+    padding-left: 34px;
+}
+
+.b2b-form-error { color: var(--b2b-danger); font-size: var(--b2b-text-xs); margin-top: var(--b2b-space-1); }
+.b2b-form-desc { color: var(--b2b-text-tertiary); font-size: var(--b2b-text-xs); margin-top: var(--b2b-space-1); }
+.b2b-field-error .b2b-input, .b2b-field-error .b2b-textarea { border-color: var(--b2b-danger); }
+.b2b-field-error .b2b-input:focus, .b2b-field-error .b2b-textarea:focus { box-shadow: 0 0 0 3px var(--b2b-danger-50); }
+
+.b2b-form-actions {
+    margin-top: var(--b2b-space-6);
+    padding-top: var(--b2b-space-5);
+    border-top: 1px solid var(--b2b-border);
+    display: flex;
+    gap: var(--b2b-space-3);
+}
+
+/* Checkbox */
+.b2b-checkbox-label { display: flex; align-items: center; gap: var(--b2b-space-2); cursor: pointer; font-size: var(--b2b-text-sm); }
+.b2b-checkbox { width: 16px; height: 16px; accent-color: var(--b2b-primary); cursor: pointer; }
+
+/* Switch */
+.b2b-switch { position: relative; display: inline-block; width: 42px; height: 22px; }
+.b2b-switch-input { opacity: 0; width: 0; height: 0; }
+.b2b-switch-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--b2b-secondary-300); border-radius: 22px; transition: var(--b2b-duration-fast); }
+.b2b-switch-slider::before { content: ''; position: absolute; height: 16px; width: 16px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: var(--b2b-duration-fast); box-shadow: var(--b2b-shadow-xs); }
+.b2b-switch-input:checked + .b2b-switch-slider { background: var(--b2b-primary); }
+.b2b-switch-input:checked + .b2b-switch-slider::before { transform: translateX(20px); }
+
+/* Radio */
+.b2b-radio-group { display: flex; flex-direction: column; gap: var(--b2b-space-3); }
+.b2b-radio-label { display: flex; align-items: center; gap: var(--b2b-space-2); cursor: pointer; font-size: var(--b2b-text-sm); }
+.b2b-radio { width: 16px; height: 16px; accent-color: var(--b2b-primary); cursor: pointer; }
+
+/* Search Box */
+.b2b-search-box { display: flex; gap: var(--b2b-space-3); }
+.b2b-search-input {
+    flex: 1;
+    padding: var(--b2b-space-2) var(--b2b-space-3);
+    padding-left: 36px;
+    border: 1px solid var(--b2b-border);
+    border-radius: var(--b2b-radius-md);
+    font-size: var(--b2b-text-sm);
+    background: var(--b2b-surface);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    transition: all var(--b2b-duration-fastest);
+}
+
+.b2b-search-input:focus {
+    outline: none;
+    border-color: var(--b2b-border-focus);
+    box-shadow: 0 0 0 3px var(--b2b-primary-50);
+}

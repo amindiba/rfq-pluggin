@@ -1,0 +1,344 @@
+/**
+ * B2B Procurement - Welcome Page Styles
+ * Version: 1.0.0
+ */
+
+.b2b-welcome-wrap {
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    direction: rtl;
+}
+
+/* Header */
+.b2b-welcome-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #3a7bd5 100%);
+    color: #fff;
+    text-align: center;
+    padding: 50px 30px;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.b2b-welcome-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+    opacity: 0.3;
+}
+
+.b2b-welcome-logo {
+    margin-bottom: 20px;
+}
+
+.b2b-logo-icon {
+    font-size: 64px;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.b2b-welcome-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+}
+
+.b2b-welcome-subtitle {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.9;
+    position: relative;
+}
+
+/* Content */
+.b2b-welcome-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards */
+.b2b-welcome-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.b2b-card-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.b2b-welcome-card h2 {
+    margin: 0 0 15px 0;
+    color: #1e3a5f;
+    font-size: 22px;
+}
+
+.b2b-welcome-card p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* Features Grid */
+.b2b-welcome-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.b2b-feature-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.b2b-feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.b2b-feature-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.b2b-feature-item h3 {
+    margin: 0 0 8px 0;
+    color: #1e3a5f;
+    font-size: 16px;
+}
+
+.b2b-feature-item p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Steps */
+.b2b-welcome-steps {
+    margin-bottom: 30px;
+}
+
+.b2b-welcome-steps h2 {
+    text-align: center;
+    color: #1e3a5f;
+    margin: 0 0 25px 0;
+    font-size: 22px;
+}
+
+.b2b-steps-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.b2b-step {
+    flex: 1;
+    text-align: center;
+    padding: 20px 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    position: relative;
+}
+
+.b2b-step-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: linear-gradient(135deg, #3a7bd5, #1e3a5f);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.b2b-step-content h4 {
+    margin: 0 0 8px 0;
+    color: #1e3a5f;
+    font-size: 15px;
+}
+
+.b2b-step-content p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Developer Card */
+.b2b-welcome-developer {
+    margin-bottom: 30px;
+}
+
+.b2b-developer-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: 2px solid #3a7bd5;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.b2b-developer-avatar {
+    flex-shrink: 0;
+}
+
+.b2b-avatar-icon {
+    font-size: 60px;
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    background: linear-gradient(135deg, #3a7bd5, #1e3a5f);
+    border-radius: 50%;
+}
+
+.b2b-developer-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.b2b-developer-info h3 {
+    margin: 0 0 5px 0;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.b2b-developer-name {
+    margin: 0 0 5px 0;
+    color: #1e3a5f;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.b2b-developer-desc {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.b2b-developer-contact {
+    flex: 1;
+    min-width: 250px;
+}
+
+.b2b-developer-contact h4 {
+    margin: 0 0 15px 0;
+    color: #1e3a5f;
+    font-size: 16px;
+}
+
+.b2b-contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.b2b-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #1e3a5f;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.b2b-contact-link:hover {
+    background: #3a7bd5;
+    color: #fff;
+    border-color: #3a7bd5;
+}
+
+.b2b-contact-icon {
+    font-size: 18px;
+}
+
+/* Footer */
+.b2b-welcome-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.b2b-btn-start {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #3a7bd5, #1e3a5f);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.b2b-btn-start:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(58, 123, 213, 0.4);
+    color: #fff;
+}
+
+.b2b-btn-arrow {
+    margin-right: 10px;
+}
+
+.b2b-footer-text {
+    margin: 20px 0 0 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .b2b-welcome-features {
+        grid-template-columns: 1fr;
+    }
+
+    .b2b-steps-list {
+        flex-direction: column;
+    }
+
+    .b2b-developer-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .b2b-contact-items {
+        align-items: stretch;
+    }
+}

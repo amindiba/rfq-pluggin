@@ -1,0 +1,29 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# WordPress
+wp-config.php
+wp-content/debug.log
+
+# Build
+*.log
+*.tmp
+
+# Docs (internal)
+docs/
+
+# Testing
+tests/
+phpunit.xml

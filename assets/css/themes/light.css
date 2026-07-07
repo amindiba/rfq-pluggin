@@ -1,0 +1,65 @@
+/**
+ * B2B Enterprise UI - Light Theme
+ * Version: 1.0.0
+ */
+
+.b2b-theme-light {
+    --b2b-surface: #ffffff;
+    --b2b-surface-dim: #f9fafb;
+    --b2b-surface-container: #f3f4f6;
+    --b2b-bg: #f8fafc;
+    --b2b-bg-elevated: #ffffff;
+    --b2b-border: #e5e7eb;
+    --b2b-text: #111827;
+    --b2b-text-secondary: #6b7280;
+}
+
+/* Dark Theme Infrastructure */
+.b2b-theme-dark {
+    --b2b-surface: #1f2937;
+    --b2b-surface-dim: #111827;
+    --b2b-surface-container: #374151;
+    --b2b-bg: #0f172a;
+    --b2b-bg-elevated: #1e293b;
+    --b2b-border: #374151;
+    --b2b-text: #f9fafb;
+    --b2b-text-secondary: #9ca3af;
+}
+
+/* Density */
+.b2b-density-compact {
+    --b2b-space-1: 2px;
+    --b2b-space-2: 4px;
+    --b2b-space-3: 8px;
+    --b2b-space-4: 12px;
+    --b2b-space-5: 16px;
+    --b2b-space-6: 20px;
+}
+
+.b2b-density-comfortable {
+    --b2b-space-1: 6px;
+    --b2b-space-2: 10px;
+    --b2b-space-3: 14px;
+    --b2b-space-4: 18px;
+    --b2b-space-5: 24px;
+    --b2b-space-6: 30px;
+}
+
+/* Accent Color Override */
+.b2b-accent-orange {
+    --b2b-primary: #f97316;
+    --b2b-primary-50: #fff7ed;
+    --b2b-primary-100: #ffedd5;
+    --b2b-primary-500: #f97316;
+    --b2b-primary-600: #ea580c;
+    --b2b-primary-700: #c2410c;
+}
+
+.b2b-accent-teal {
+    --b2b-primary: #14b8a6;
+    --b2b-primary-50: #f0fdfa;
+    --b2b-primary-100: #ccfbf1;
+    --b2b-primary-500: #14b8a6;
+    --b2b-primary-600: #0d9488;
+    --b2b-primary-700: #0f766e;
+}
