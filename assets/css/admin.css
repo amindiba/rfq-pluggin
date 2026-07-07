@@ -1207,6 +1207,20 @@ body.b2b-modal-open { overflow: hidden; }
 @media (max-width: 900px) { .b2b-product-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .b2b-product-grid { grid-template-columns: 1fr; } }
 
+/* ===== UTILITY CLASSES ===== */
+.b2b-search-input { max-width: 300px; }
+.b2b-filter-select { max-width: 150px; }
+.b2b-form-compact { margin-top: 16px; }
+.b2b-form-max-sm { max-width: 700px; }
+.b2b-form-max-md { max-width: 800px; }
+.b2b-notification-link { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 4px; }
+.b2b-dev-trigger-link { cursor: pointer; text-decoration: underline dotted; color: var(--b2b-text-tertiary); }
+.b2b-table-overflow { padding: 0; overflow-x: auto; }
+.b2b-chart-container { display: flex; flex-direction: column; gap: 14px; }
+.b2b-chart-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 13px; }
+.b2b-chart-bar-track { height: 10px; background: var(--b2b-border); border-radius: 5px; overflow: hidden; }
+.b2b-chart-bar-fill { height: 100%; border-radius: 5px; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+
 /* ===== DRAG & DROP ===== */
 .b2b-media-upload {
     border: 2px dashed var(--b2b-border, #ECE6F8);

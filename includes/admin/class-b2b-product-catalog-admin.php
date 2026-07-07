@@ -28,7 +28,6 @@ class B2B_Product_Catalog_Admin {
     // ==================== PRODUCTS LIST ====================
     public static function render_products() {
         B2B_Procurement_Security::require_capability('manage_woocommerce');
-        wp_enqueue_media();
         B2B_Procurement_Admin::shell_start();
         ?>
         <div class="b2b-workspace-header">
@@ -122,7 +121,6 @@ class B2B_Product_Catalog_Admin {
     // ==================== PRODUCT CREATE/EDIT ====================
     public static function render_product_form() {
         B2B_Procurement_Security::require_capability('manage_woocommerce');
-        wp_enqueue_media();
         $is_edit = isset($_GET['id']);
         $product = null;
         if ($is_edit) {
@@ -427,7 +425,6 @@ class B2B_Product_Catalog_Admin {
     // ==================== CATEGORIES LIST ====================
     public static function render_categories() {
         B2B_Procurement_Security::require_capability('manage_woocommerce');
-        wp_enqueue_media();
         B2B_Procurement_Admin::shell_start();
         ?>
         <div class="b2b-workspace-header">

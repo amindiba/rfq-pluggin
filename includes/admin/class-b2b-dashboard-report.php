@@ -476,17 +476,17 @@ class B2B_Dashboard_Report {
 
         $rfqs = $wpdb->get_results("SELECT id, reference, title, status, created_at FROM {$prefix}b2b_rfqs WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 3");
         foreach ($rfqs as $r) {
-            $events[] = array('module' => 'درخواست خرید', 'desc' => $r->reference . ' — ' . mb_substr($r->title, 0, 25), 'url' => 'admin.php?page=b2b-rfq-detail&id=' . $r->id, 'time' => self::time_ago($r->created_at), 'color' => '#7B2CBF');
+            $events[] = array('module' => 'درخواست خرید', 'desc' => $r->reference . ' — ' . mb_substr($r->title, 0, 25), 'url' => 'admin.php?page=b2b-rfq-detail&id=' . $r->id, 'time' => self::time_ago($r->created_at), 'color' => 'var(--b2b-primary)');
         }
 
         $pos = $wpdb->get_results("SELECT id, po_number, supplier_name, status, created_at FROM {$prefix}b2b_purchase_orders WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 3");
         foreach ($pos as $p) {
-            $events[] = array('module' => 'سفارش خرید', 'desc' => $p->po_number . ' — ' . $p->supplier_name, 'url' => 'admin.php?page=b2b-po-detail&id=' . $p->id, 'time' => self::time_ago($p->created_at), 'color' => '#22C55E');
+            $events[] = array('module' => 'سفارش خرید', 'desc' => $p->po_number . ' — ' . $p->supplier_name, 'url' => 'admin.php?page=b2b-po-detail&id=' . $p->id, 'time' => self::time_ago($p->created_at), 'color' => 'var(--b2b-success)');
         }
 
         $contracts = $wpdb->get_results("SELECT id, contract_number, title, created_at FROM {$prefix}b2b_contracts WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT 2");
         foreach ($contracts as $c) {
-            $events[] = array('module' => 'قرارداد', 'desc' => $c->contract_number . ' — ' . mb_substr($c->title, 0, 25), 'url' => 'admin.php?page=b2b-contract-detail&id=' . $c->id, 'time' => self::time_ago($c->created_at), 'color' => '#3B82F6');
+            $events[] = array('module' => 'قرارداد', 'desc' => $c->contract_number . ' — ' . mb_substr($c->title, 0, 25), 'url' => 'admin.php?page=b2b-contract-detail&id=' . $c->id, 'time' => self::time_ago($c->created_at), 'color' => 'var(--b2b-info)');
         }
 
         usort($events, function ($a, $b) { return strcmp($b['time'], $a['time']); });
