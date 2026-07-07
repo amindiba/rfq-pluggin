@@ -143,6 +143,40 @@ class B2B_Product_Catalog_Ajax {
         }
 
         if ($result['success']) {
+            $product_id = $result['id'] ?? $id;
+
+            // Save thumbnail
+            $thumbnail_id = intval($_POST['thumbnail_id'] ?? 0);
+            if ($thumbnail_id > 0) {
+                set_post_thumbnail($product_id, $thumbnail_id);
+            } else {
+                delete_post_thumbnail($product_id);
+            }
+
+            // Save gallery
+            $gallery_raw = sanitize_text_field(wp_unslash($_POST['gallery_ids'] ?? ''));
+            if (!empty($gallery_raw)) {
+                $gallery_ids = array_filter(array_map('intval', explode(',', $gallery_raw)));
+                update_post_meta($product_id, '_product_image_gallery', implode(',', $gallery_ids));
+            } else {
+                update_post_meta($product_id, '_product_image_gallery', '');
+            }
+
+            // Save additional WC meta
+            update_post_meta($product_id, '_tax_status', sanitize_text_field(wp_unslash($_POST['tax_status'] ?? 'none')));
+            update_post_meta($product_id, '_tax_class', sanitize_text_field(wp_unslash($_POST['tax_class'] ?? '')));
+            update_post_meta($product_id, '_manage_stock', intval($_POST['manage_stock'] ?? 0) ? 'yes' : 'no');
+            if (isset($_POST['stock_quantity']) && $_POST['stock_quantity'] !== '') update_post_meta($product_id, '_stock', intval($_POST['stock_quantity']));
+            update_post_meta($product_id, '_stock_status', sanitize_text_field(wp_unslash($_POST['stock_status'] ?? 'instock')));
+            update_post_meta($product_id, '_backorders', sanitize_text_field(wp_unslash($_POST['backorders'] ?? 'no')));
+            update_post_meta($product_id, '_sold_individually', intval($_POST['sold_individually'] ?? 0) ? 'yes' : '');
+            update_post_meta($product_id, '_length', !empty($_POST['length']) ? floatval($_POST['length']) : '');
+            update_post_meta($product_id, '_width', !empty($_POST['width']) ? floatval($_POST['width']) : '');
+            update_post_meta($product_id, '_height', !empty($_POST['height']) ? floatval($_POST['height']) : '');
+            update_post_meta($product_id, '_featured', intval($_POST['featured'] ?? 0));
+            update_post_meta($product_id, 'menu_order', intval($_POST['menu_order'] ?? 0));
+            update_post_meta($product_id, '_purchase_note', sanitize_textarea_field(wp_unslash($_POST['purchase_note'] ?? '')));
+
             wp_send_json_success($result);
         } else {
             wp_send_json_error(array('message' => reset($result['errors']), 'errors' => $result['errors']));
