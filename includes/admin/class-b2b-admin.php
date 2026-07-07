@@ -38,6 +38,11 @@ class B2B_Procurement_Admin {
             wp_safe_redirect(admin_url('edit-tags.php?taxonomy=product_cat'));
             exit;
         }
+        // Redirect old geography pages to WooCommerce settings
+        if ($page === 'b2b-geography' || $page === 'b2b-provinces' || $page === 'b2b-cities') {
+            wp_safe_redirect(admin_url('admin.php?page=wc-settings&tab=general&section=general'));
+            exit;
+        }
     }
 
     public static function register_menus() {
@@ -146,9 +151,6 @@ class B2B_Procurement_Admin {
         $hidden = array(
             array('b2b-master-data', array('B2B_Procurement_Master_Data', 'render_dashboard')),
             array('b2b-measurement-units', array('B2B_Procurement_Master_Data', 'render_units')),
-            array('b2b-geography', array('B2B_Procurement_Geography', 'render_dashboard')),
-            array('b2b-provinces', array('B2B_Procurement_Geography', 'render_provinces')),
-            array('b2b-cities', array('B2B_Procurement_Geography', 'render_cities')),
             array('b2b-settings', array('B2B_Procurement_Settings_Page', 'render')),
             array('b2b-tools', array('B2B_Procurement_Tools_Page', 'render')),
             array('b2b-logs', array('B2B_Procurement_Logs_Page', 'render')),
@@ -213,9 +215,6 @@ class B2B_Procurement_Admin {
             )),
             array('group' => 'اطلاعات پایه', 'items' => array(
                 array('icon' => '<svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>', 'label' => 'واحدهای اندازه‌گیری', 'url' => 'admin.php?page=b2b-measurement-units', 'slug' => 'b2b-measurement-units'),
-                array('icon' => '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>', 'label' => 'جغرافیای ایران', 'url' => 'admin.php?page=b2b-geography', 'slug' => 'b2b-geography'),
-                array('icon' => '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>', 'label' => 'استان‌ها', 'url' => 'admin.php?page=b2b-provinces', 'slug' => 'b2b-provinces'),
-                array('icon' => '<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>', 'label' => 'شهرها', 'url' => 'admin.php?page=b2b-cities', 'slug' => 'b2b-cities'),
             )),
             array('group' => 'کاتالوگ محصولات', 'items' => array(
                 array('icon' => '<svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>', 'label' => 'محصولات', 'url' => 'edit.php?post_type=product', 'slug' => 'edit.php'),
