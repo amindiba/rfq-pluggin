@@ -103,76 +103,12 @@ final class B2B_Procurement_Bootstrap {
                 require_once $path;
             }
         }
-
-        // Product Resource Manager module
-        $pr_path = $base . 'modules/product-resources/bootstrap.php';
-        if (file_exists($pr_path)) {
-            require_once $pr_path;
-        }
-
-        // Product Definitions module
-        $pd_path = $base . 'modules/product-definitions/bootstrap.php';
-        if (file_exists($pd_path)) {
-            require_once $pd_path;
-        }
-
-        // Dynamic Specifications module
-        $ds_path = $base . 'modules/dynamic-specifications/bootstrap.php';
-        if (file_exists($ds_path)) {
-            require_once $ds_path;
-        }
-
-        // Product Features module
-        $pf_path = $base . 'modules/product-features/bootstrap.php';
-        if (file_exists($pf_path)) {
-            require_once $pf_path;
-        }
     }
 
     private function init_hooks() {
         register_activation_hook(B2B_PROCUREMENT_PLUGIN_FILE, array('B2B_Procurement_Activator', 'activate'));
         register_deactivation_hook(B2B_PROCUREMENT_PLUGIN_FILE, array('B2B_Procurement_Deactivator', 'deactivate'));
         add_action('plugins_loaded', array($this, 'init'));
-
-        // Init Product Resource Manager
-        add_action('plugins_loaded', function () {
-            if (class_exists('B2B\ProductResources\Bootstrap')) {
-                \B2B\ProductResources\Bootstrap::instance();
-            }
-        }, 20);
-
-        // Init Product Definitions
-        add_action('plugins_loaded', function () {
-            if (class_exists('B2B\ProductDefinitions\Bootstrap')) {
-                try {
-                    \B2B\ProductDefinitions\Bootstrap::instance()->init();
-                } catch (\Throwable $e) {
-                    error_log('[B2B] PD init error: ' . $e->getMessage());
-                }
-            }
-        }, 25);
-
-        // Init Dynamic Specifications
-        add_action('plugins_loaded', function () {
-            if (class_exists('B2B\DynamicSpecs\Bootstrap')) {
-                try {
-                    \B2B\DynamicSpecs\Bootstrap::instance()->init();
-                } catch (\Throwable $e) {
-                    error_log('[B2B] DS init error: ' . $e->getMessage());
-                }
-            }
-        }, 30);
-
-        // Init Product Features
-        add_action('plugins_loaded', function () {
-            if (class_exists('B2B\ProductFeatures\Bootstrap')) {
-                try {
-                    \B2B\ProductFeatures\Bootstrap::instance()->init();
-                } catch (\Throwable $e) {
-                    error_log('[B2B] PF init error: ' . $e->getMessage());
-                }
-            }
-        }, 35);
     }
 
     public function init() {

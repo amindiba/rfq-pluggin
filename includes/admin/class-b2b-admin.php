@@ -217,10 +217,6 @@ class B2B_Procurement_Admin {
             'b2b-notifications' => 'اعلان‌ها',
             'b2b-notification-detail' => 'جزئیات اعلان',
             'b2b-dashboard' => 'داشبورد مدیریت',
-            'b2b-product-definitions' => 'تعریف محصولات',
-            'b2b-product-features' => 'ویژگی‌های محصولات',
-            'b2b-spec-manager' => 'مشخصات فنی',
-            'b2b-product-resources' => 'منابع محصول',
             'b2b-report-rfqs' => 'گزارش درخواست‌ها',
             'b2b-report-pos' => 'گزارش سفارشات',
             'b2b-report-contracts' => 'گزارش قراردادها',
@@ -249,9 +245,6 @@ class B2B_Procurement_Admin {
             array('group' => 'کاتالوگ محصولات', 'items' => array(
                 array('icon' => '<svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>', 'label' => 'محصولات', 'url' => 'admin.php?page=b2b-products', 'slug' => 'b2b-products'),
                 array('icon' => '<svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>', 'label' => 'دسته‌بندی‌ها', 'url' => 'admin.php?page=b2b-categories', 'slug' => 'b2b-categories'),
-                array('icon' => '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>', 'label' => 'تعریف محصولات', 'url' => 'admin.php?page=b2b-product-definitions', 'slug' => 'b2b-product-definitions'),
-                array('icon' => '<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>', 'label' => 'ویژگی‌های محصولات', 'url' => 'admin.php?page=b2b-product-features', 'slug' => 'b2b-product-features'),
-                array('icon' => '<svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>', 'label' => 'مشخصات فنی', 'url' => 'admin.php?page=b2b-spec-manager', 'slug' => 'b2b-spec-manager'),
             )),
             array('group' => 'درخواست خرید', 'items' => array(
                 array('icon' => '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>', 'label' => 'درخواست‌های خرید', 'url' => 'admin.php?page=b2b-rfqs', 'slug' => 'b2b-rfqs'),
